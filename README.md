@@ -13,11 +13,11 @@ This is a crawler for piazza to extract students who are endorsed for good quest
 ### launch
 - `python3 main.py [piazza_class_URL] [start_page_number] [end_page_number] [piazza_ID] [piazza_PASSWD]`
     <br>
-    **piazza_class_URL** means like `https://piazza.com/class/[class_string]`.
-    you have to remove **?** character at the end of the string.
-    When you click on each posts, there is a number after ***cid=*** in the url.
-    So, **start_page_number** means the first post of the class,
-    and **end_page_number** means the last post of the class.
+    **piazza_class_URL** means like `https://piazza.com/class/[class_string]`.<br>
+    you have to remove **?** character at the end of the string.<br>
+    When you click on each posts, there is a number after ***cid=*** in the url.<br>
+    So, **start_page_number** means the first post of the class,<br>
+    and **end_page_number** means the last post of the class.<br>
     **piazza_ID** and **piazza_PASSWD** is your piazza login id and password.
 - mesurement time 1~600 posts : 3183 seconds, 53 minutes
 ### output
