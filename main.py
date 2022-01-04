@@ -22,7 +22,7 @@ def appendNameToDic(studentName: str, i: int, df: dict) -> dict:
 
 
 def main():
-    start = time.time()
+    start_time = time.time()
 
     if len(sys.argv) != 6:
         print("RUN python3 main.py [piazza_class_URL] [start_page_number] \
@@ -115,11 +115,12 @@ def main():
     df = {x: df[x] for x in sorted(df.keys())}
     data = pd.DataFrame(list(df.items()), columns=["StudentName", "BonusId"])
     data['Count'] = list(len(x) for x in df.values())
-    data.to_csv("output.csv", mode='w', sep='\t')
+    data = data[['StudentName', 'Count', 'BonusId']]
+    data.to_csv("output.csv", mode='w', sep=',')
 
     # time
-    end = time.time()
-    print("time", end - start, "seconds")
+    end_time = time.time()
+    print("time", end_time - start_time, "seconds")
 
 
 if __name__ == "__main__":
