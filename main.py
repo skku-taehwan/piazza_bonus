@@ -24,9 +24,9 @@ def appendNameToDic(studentName: str, i: int, df: dict) -> dict:
 def main():
     start = time.time()
 
-    if len(sys.argv) != 4:
-        print("RUN python3 [piazza_class_URL] \
-            [piazza_ID] [piazza_PASSWD]", file=sys.stderr)
+    if len(sys.argv) != 6:
+        print("RUN python3 main.py [piazza_class_URL] [start_page_number] \
+            [end_page_number] [piazza_ID] [piazza_PASSWD]", file=sys.stderr)
         return
     # Config
     df = dict()
@@ -35,14 +35,14 @@ def main():
     driver = webdriver.Chrome(service=ser, options=option)
 
     # Login
-    url, id, passwd = sys.argv[1], sys.argv[2], sys.argv[3]
+    url, start, end, id, passwd = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], sys.argv[5]
     driver.get("{url}?cid={number}".format(url=url, number=1))
     driver.find_element(By.ID, "email_field").send_keys(id)
     driver.find_element(By.ID, "password_field").send_keys(passwd)
     driver.find_element(By.ID, "modal_login_button").click()
 
-    # Page 1 to 600
-    for i in range(1, 600):
+    # Page start to end
+    for i in range(start, end + 1):
         try:
             # get HTML
             driver.implicitly_wait(300)
